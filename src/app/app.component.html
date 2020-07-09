@@ -1,0 +1,44 @@
+<div>
+  <section class="header-section">
+    <div class="header">
+
+    </div>
+  </section>
+  <section class="sidebar-section">
+    <div class="sidebar-data">
+          <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel [expanded]="true"> 
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Data1
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <div class="sidebar-item">Backups</div>
+                <div class="sidebar-item active">Alerts</div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Buy Certificate
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="sidebar-item">Buy New Certificate</div>
+              <div class="sidebar-item">My Certificates</div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 Settings 
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="sidebar-item">Profile</div>
+              <div class="sidebar-item">New Item</div>
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+  </section>
+  <!-- <app-home></app-home> -->
+  <router-outlet></router-outlet>
+</div>
+

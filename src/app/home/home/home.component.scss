@@ -1,0 +1,39 @@
+button{
+    background-color: #ff4081;
+    color: #fff;
+    float: right;
+}
+.alert-section{
+    .form-section{
+        width: 100%;
+    }
+}
+.right-section{
+    display: inline-block;
+    width: 70%;
+    // margin-top: 60px;
+    padding-left: 5%;
+    .section-area{
+        width:60%;
+        margin-top: 20px;
+        .form-section{
+            width: 55%;
+        }
+        .delete{
+            float: none;
+        }
+    }
+    table{
+        width: 100%;
+    }
+    .email-section{
+        border: 1px solid #eee;
+        p{
+            padding: 0 10px;
+        }
+        .save{
+            float: right;
+            margin: 10px 0;
+        }
+    }
+}
