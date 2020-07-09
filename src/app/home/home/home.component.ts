@@ -3,8 +3,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {
 	FormBuilder,
 	FormGroup,
-	Validators,
-	FormControl,
 } from "@angular/forms";
 @Component({
   selector: 'app-home',
@@ -16,18 +14,18 @@ export class HomeComponent implements OnInit {
   @ViewChild("dialogAlertTemplate", { static: true }) dialogAlert: TemplateRef<ElementRef>;
   checked='checked';
   configure:Array<object>;
+  alertForm: FormGroup;
+  tableData:Array<object>;
+  displayedColumns: string[];
+  dataSource:Array<object>;
   dialogEmailRef:any;
   dialogAlertRef:any;
-  alertForm: FormGroup
-  tableData:any = [];
- displayedColumns: string[] = ['Type', 'Conditions', 'Actions'];
- dataSource:any =[
-  
- ];
   constructor(public dialog: MatDialog, private el: ElementRef, private fb: FormBuilder) { 
     this.dialogConfigure = this.el.nativeElement;
     this.dialogAlert = this.el.nativeElement;
-    this.tableData=[];
+    this.displayedColumns = ['Type', 'Conditions', 'Actions']
+    this.tableData = [];
+    this.dataSource = [];
     this.configure = [
       {
         email:"Vikash@mobileyug.com"
@@ -35,8 +33,7 @@ export class HomeComponent implements OnInit {
       {
         email:"Rahul@testing.com"
       }
-    ];
-
+    ]
   }
 
   ngOnInit() {
@@ -45,9 +42,6 @@ export class HomeComponent implements OnInit {
       Conditions: [null],
       Actions: [null]
     })
-    // this.tableData = localStorage.getItem('alertObject');
-    // console.log(typeof JSON.parse(this.tableData));
-    //this.dataSource = this.tableData;
    this.getData();
   }
   getData(){
