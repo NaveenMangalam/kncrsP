@@ -1,11 +1,43 @@
 button{
     background-color: #ff4081;
     color: #fff;
-    float: right;
+    // float: right;
 }
 .alert-section{
     .form-section{
         width: 100%;
+    }
+    .alert{
+        padding-bottom: 20px;
+    }
+    .add-button{
+        float: right;
+        &:disabled{
+            background-color: #eee;
+            outline: none;
+            border: none;
+            color: #000;
+        }
+    }
+    .invalid{
+        padding-top: 17px;
+    }
+}
+.email-section{
+    border: 1px solid #eee;
+    margin: 10px 0;
+    p{
+        padding: 0 10px;
+    }
+    .add-button{
+        float: right;
+        margin: 10px 0;
+        &:disabled{
+            background-color: #eee;
+            outline: none;
+            border: none;
+            color: #000;
+        }
     }
 }
 .right-section{
@@ -17,6 +49,9 @@ button{
     .section-area{
         width:60%;
         margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         .form-section{
             width: 55%;
         }
@@ -27,14 +62,5 @@ button{
     table{
         width: 100%;
     }
-    .email-section{
-        border: 1px solid #eee;
-        p{
-            padding: 0 10px;
-        }
-        .save{
-            float: right;
-            margin: 10px 0;
-        }
-    }
+   
 }

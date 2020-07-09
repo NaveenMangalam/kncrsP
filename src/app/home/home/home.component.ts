@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {
 	FormBuilder,
 	FormGroup,
+  Validators,
 } from "@angular/forms";
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, private el: ElementRef, private fb: FormBuilder) { 
     this.dialogConfigure = this.el.nativeElement;
     this.dialogAlert = this.el.nativeElement;
-    this.displayedColumns = ['Type', 'Conditions', 'Actions']
+    this.displayedColumns = ['Type', 'Condition', 'Action']
     this.tableData = [];
     this.dataSource = [];
     this.configure = [
@@ -38,9 +39,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.alertForm = this.fb.group({
-      Type: [null],
-      Conditions: [null],
-      Actions: [null]
+      Type: [null, Validators.required],
+      Condition: [null, Validators.required],
+      Action: [null, Validators.required]
     })
    this.getData();
   }
@@ -58,7 +59,10 @@ export class HomeComponent implements OnInit {
   }
 
   openDialogAlert() {
-    let dialogAlert= this.dialog.open(this.dialogAlert);
+    let dialogAlert= this.dialog.open(this.dialogAlert, {
+			width: "400px",
+			height: "auto"
+		});
     this.dialogAlertRef = dialogAlert;
   }
   addEmail(){

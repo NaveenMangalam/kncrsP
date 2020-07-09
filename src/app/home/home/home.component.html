@@ -5,8 +5,8 @@
     <mat-checkbox [(ngModel)]="checked">{{'Send Alert on Following Emails'}} &nbsp; </mat-checkbox>
     <div class="email-section">
       <p *ngFor="let item of configure">{{item?.email}}</p>
-     
-      <button class="save" mat-button (click)="addEmail()">{{'Save'}}</button>
+
+      <button class="add-button" mat-button (click)="addEmail()">{{'Save'}}</button>
     </div>
   </div>
 </ng-template>
@@ -17,28 +17,44 @@
 <ng-template #dialogAlertTemplate>
   <div class="alert-section">
     <form [formGroup]="alertForm">
-    <mat-form-field appearance="outline" class="form-section">
-      <mat-label>{{'Alert Type'}}</mat-label>
-      <mat-select formControlName="Type">
-        <mat-option value="Load Average">{{'Load Average'}}</mat-option>
-        <mat-option value="Harddisk Space">{{'Harddisk Space'}}</mat-option>
-        <mat-option value="Memory Usage">{{'Memory Usage'}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-section">
-      <mat-label>{{'Conditions'}}</mat-label>
-      <mat-select formControlName="Conditions"> 
-        <mat-option value="Is More Than">{{'Is More Than (>)'}}</mat-option>
-        <mat-option value="Is Less Than">{{'Is Less Than (<)'}}</mat-option>
-        <mat-option value="Is Equal To">{{'Is Equal To (=)'}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-section">
-      <mat-label>{{'Value'}}</mat-label>
-      <input matInput appearance="outline" placeholder="Value" formControlName="Actions">
-    </mat-form-field>
-    <button mat-button (click)="addAlert(alertForm.value)">{{'ADD'}}</button>
-  </form>
+      <mat-form-field appearance="outline" class="form-section alert">
+        <mat-label>{{'Alert Type'}}</mat-label>
+        <mat-select formControlName="Type">
+          <mat-option value="Load Average">{{'Load Average'}}</mat-option>
+          <mat-option value="Harddisk Space">{{'Harddisk Space'}}</mat-option>
+          <mat-option value="Memory Usage">{{'Memory Usage'}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="alertForm.controls.Type.errors" class="invalid">
+          <div *ngIf="alertForm.controls.Type.errors.required">
+            {{'Type is required'}}
+          </div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-section alert">
+        <mat-label>{{'Condition'}}</mat-label>
+        <mat-select formControlName="Condition">
+          <mat-option value="Is More Than">{{'Is More Than (>)'}}</mat-option>
+          <mat-option value="Is Less Than">{{'Is Less Than (<)'}}</mat-option>
+          <mat-option value="Is Equal To">{{'Is Equal To (=)'}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="alertForm.controls.Condition.errors" class="invalid">
+          <div *ngIf="alertForm.controls.Condition.errors.required">
+            {{'Condition is required'}}
+          </div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-section alert">
+        <mat-label>{{'Value'}}</mat-label>
+        <input matInput appearance="outline" placeholder="Value" formControlName="Action">
+        <mat-error *ngIf="alertForm.controls.Action.errors" class="invalid">
+          <div *ngIf="alertForm.controls.Action.errors.required">
+            {{'Value is required'}}
+          </div>
+        </mat-error>
+      </mat-form-field>
+      <button class="add-button" [disabled]="!alertForm.valid" mat-button
+        (click)="addAlert(alertForm.value)">{{'ADD'}}</button>
+    </form>
   </div>
 </ng-template>
 
@@ -69,15 +85,17 @@
       </ng-container>
 
       <!-- Conditions Column -->
-      <ng-container matColumnDef="Conditions">
-        <th mat-header-cell *matHeaderCellDef> {{'Conditions'}} </th>
-        <td mat-cell *matCellDef="let element">{{'Alert When'}} {{element.Type}} {{element.Conditions}} {{element.Actions}} </td>
+      <ng-container matColumnDef="Condition">
+        <th mat-header-cell *matHeaderCellDef> {{'Condition'}} </th>
+        <td mat-cell *matCellDef="let element">{{'Alert When'}} {{element.Type}} {{element.Condition}}
+          {{element.Action}} </td>
       </ng-container>
 
       <!-- Actions Column -->
-      <ng-container matColumnDef="Actions">
-        <th mat-header-cell *matHeaderCellDef> {{'Actions'}} </th>
-        <td mat-cell *matCellDef="let element;let i = index"> <button class="delete" mat-button (click)="deleteData(i)">Delete</button> </td>
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> {{'Action'}} </th>
+        <td mat-cell *matCellDef="let element;let i = index"> <button class="delete" mat-button
+            (click)="deleteData(i)">Delete</button> </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
