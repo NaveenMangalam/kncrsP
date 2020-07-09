@@ -1,3 +1,5 @@
+<!-- This Dialog For Email Configure -->
+
 <ng-template #dialogConfigureTemplate>
   <div>
     <mat-checkbox [(ngModel)]="checked">{{'Send Alert on Following Emails'}} &nbsp; </mat-checkbox>
@@ -8,10 +10,14 @@
     </div>
   </div>
 </ng-template>
+
+<!-- This Dialog For Add Alert Data in LocalStorage then Fetch data from local Storage -->
+<!-- Need Local Storage only for Refress purpose -->
+
 <ng-template #dialogAlertTemplate>
   <div class="alert-section">
     <form [formGroup]="alertForm">
-    <mat-form-field appearance="fill" class="form-section">
+    <mat-form-field appearance="outline" class="form-section">
       <mat-label>{{'Alert Type'}}</mat-label>
       <mat-select formControlName="Type">
         <mat-option value="Load Average">{{'Load Average'}}</mat-option>
@@ -19,7 +25,7 @@
         <mat-option value="Memory Usage">{{'Memory Usage'}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill" class="form-section">
+    <mat-form-field appearance="outline" class="form-section">
       <mat-label>{{'Conditions'}}</mat-label>
       <mat-select formControlName="Conditions"> 
         <mat-option value="Is More Than">{{'Is More Than (>)'}}</mat-option>
@@ -27,14 +33,16 @@
         <mat-option value="Is Equal To">{{'Is Equal To (=)'}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill" class="form-section">
+    <mat-form-field appearance="outline" class="form-section">
       <mat-label>{{'Value'}}</mat-label>
-      <input matInput placeholder="Value" formControlName="Actions">
+      <input matInput appearance="outline" placeholder="Value" formControlName="Actions">
     </mat-form-field>
     <button mat-button (click)="addAlert(alertForm.value)">{{'ADD'}}</button>
   </form>
   </div>
 </ng-template>
+
+<!-- This Section is Right section on main home Page Screen -->
 
 <section class="right-section">
   <div class="section-area">
@@ -42,8 +50,8 @@
       mat-button (click)="openDialogConfigure()">{{'Configure'}}</button>
   </div>
   <div class="section-area">
-    {{'Select Server'}} &nbsp; <mat-form-field appearance="fill" class="form-section">
-      <mat-label>Choose one</mat-label>
+    {{'Select Server'}} &nbsp; <mat-form-field appearance="outline" class="form-section">
+      <mat-label>{{'Select Server'}}</mat-label>
       <mat-select>
         <mat-option value="{{'Shantanu Server (203.22.32.44)'}}">{{'Shantanu Server (203.22.32.44)'}}</mat-option>
         <mat-option value="{{'Shantanu Server (203.24.44.66)'}}">{{'Shantanu Server (203.24.44.66)'}}</mat-option>

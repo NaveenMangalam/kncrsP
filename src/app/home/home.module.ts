@@ -6,11 +6,9 @@ import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module'
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ConfigureComponent } from './configure/configure.component';
-import { AlertTypeComponent } from './alert-type/alert-type.component';
 
 @NgModule({
-  declarations: [HomeComponent, ConfigureComponent, AlertTypeComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     FormsModule,
