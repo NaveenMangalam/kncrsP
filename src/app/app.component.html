@@ -1,7 +1,5 @@
 <div>
-  <section class="header-section">
-    <div class="header">{{'Header Section'}}</div>
-  </section>
+  
   <section class="sidebar-section">
     <div class="sidebar-data">
           <mat-accordion class="example-headers-align" multi>
@@ -12,7 +10,7 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
                 <div class="sidebar-item">{{'Backups'}}</div>
-                <div class="sidebar-item active">{{'Alerts'}}</div>
+                <div class="sidebar-item">{{'Alerts'}}</div>
             </mat-expansion-panel>
             <mat-expansion-panel [expanded]="true">
               <mat-expansion-panel-header>
@@ -37,8 +35,6 @@
     </div>
   </section>
   <router-outlet></router-outlet>
-  <section class="footer-section">
-    <div class="footer">{{'Footer Section'}}</div>
-  </section>
+  
 </div>
 

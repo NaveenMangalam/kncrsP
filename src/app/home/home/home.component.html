@@ -24,11 +24,7 @@
           <mat-option value="Harddisk Space">{{'Harddisk Space'}}</mat-option>
           <mat-option value="Memory Usage">{{'Memory Usage'}}</mat-option>
         </mat-select>
-        <mat-error *ngIf="alertForm.controls.Type.errors" class="invalid">
-          <div *ngIf="alertForm.controls.Type.errors.required">
-            {{'Type is required'}}
-          </div>
-        </mat-error>
+       
       </mat-form-field>
       <mat-form-field appearance="outline" class="form-section alert">
         <mat-label>{{'Condition'}}</mat-label>
@@ -37,22 +33,14 @@
           <mat-option value="Is Less Than">{{'Is Less Than (<)'}}</mat-option>
           <mat-option value="Is Equal To">{{'Is Equal To (=)'}}</mat-option>
         </mat-select>
-        <mat-error *ngIf="alertForm.controls.Condition.errors" class="invalid">
-          <div *ngIf="alertForm.controls.Condition.errors.required">
-            {{'Condition is required'}}
-          </div>
-        </mat-error>
+       
       </mat-form-field>
       <mat-form-field appearance="outline" class="form-section alert">
         <mat-label>{{'Value'}}</mat-label>
         <input matInput appearance="outline" placeholder="Value" formControlName="Action">
-        <mat-error *ngIf="alertForm.controls.Action.errors" class="invalid">
-          <div *ngIf="alertForm.controls.Action.errors.required">
-            {{'Value is required'}}
-          </div>
-        </mat-error>
+       
       </mat-form-field>
-      <button class="add-button" [disabled]="!alertForm.valid" mat-button
+      <button class="add-button" mat-button
         (click)="addAlert(alertForm.value)">{{'ADD'}}</button>
     </form>
   </div>

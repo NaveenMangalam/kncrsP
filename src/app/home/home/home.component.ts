@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.alertForm = this.fb.group({
-      Type: [null, Validators.required],
-      Condition: [null, Validators.required],
-      Action: [null, Validators.required]
+      Type: [null],
+      Condition: [null],
+      Action: [null]
     })
    this.getData();
   }
